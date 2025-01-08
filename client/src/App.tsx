@@ -1,10 +1,15 @@
-import { ReactElement, FC } from "react";
+import { Route, Routes } from "react-router-dom";
+import { RouteIndex } from "@/helper/constants";
+import Layout from "@/layout/layout";
+import HomePage from "./pages/HomePage";
 
-const App: FC<ReactElement> = () => {
+const App = () => {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
-    </div>
+    <Routes>
+      <Route path={RouteIndex} element={<Layout />}>
+        <Route index element={<HomePage />} />
+      </Route>
+    </Routes>
   );
 };
 
