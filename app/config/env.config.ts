@@ -11,7 +11,10 @@ class EnvConfig {
       NODE_ENV: process.env.NODE_ENV,
       SERVER_MAINTENANCE: process.env["SERVER_MAINTENANCE"] === "true",
 
-      MONGO_URI: process.env["DATABASE_URL"],
+      MONGO_URI:
+        process.env.NODE_ENV === "dev"
+          ? process.env["LOCAL_DATABASE_URL"]
+          : process.env["PROD_DATABASE_URL"],
       DB_NAME: process.env["DB_NAME"],
 
       API_PREFIX: process.env["API_PREFIX"] || "api/v1",
@@ -19,15 +22,11 @@ class EnvConfig {
       CORS_ENABLED: process.env["CORS_ENABLED"] === "true",
       LOG_DAYS: process.env["LOG_DAYS"] || 10,
 
-    //   JWT_SECRET: process.env["JWT_SECRET"],
-    //   JWT_EXPIRES_IN: process.env["JWT_EXPIRES_IN"],
+      JWT_SECRET: process.env["JWT_SECRET"],
+      JWT_EXPIRES_IN: process.env["JWT_EXPIRES_IN"],
 
-    //   SENDGRID_API_KEY: process.env["SENDGRID_API_KEY"],
-    //   SMTP_FROM: process.env["SMTP_FROM"],
-
-    //   CLOUDINARY_CLOUD_NAME: process.env["CLOUDINARY_CLOUD_NAME"],
-    //   CLOUDINARY_API_KEY: process.env["CLOUDINARY_API_KEY"],
-    //   CLOUDINARY_API_SECRET: process.env["CLOUDINARY_API_SECRET"],
+      //   SENDGRID_API_KEY: process.env["SENDGRID_API_KEY"],
+      //   SMTP_FROM: process.env["SMTP_FROM"],
     };
 
     for (const [key, value] of Object.entries(config)) {

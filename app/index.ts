@@ -1,4 +1,5 @@
 import express from "express";
+import { MongoDB } from "@config/databas.config";
 import type { Application } from "express";
 import Logger from "@helper/logger";
 import EnvConfig from "@config/env.config";
@@ -7,6 +8,8 @@ import CORS from "@middleware/cors.middleware";
 import Morgan from "@middleware/morgan.middleware";
 import Routes from "@route/routes";
 import ExceptionHandler from "@helper/handler";
+import FirebaseConfig from "@config/firebase.config";
+import SwaggerDocs from "@config/swagger.config";
 
 /**
  * @name ExpressApp
@@ -29,6 +32,7 @@ class ExpressApp {
     this.mountDotEnv();
     this.mountMiddlewares();
     this.mouteRoutes();
+    this.mountSwagger();
     this.registerHandlers();
 
     Logger.getInstance().info("App :: Initialized");
@@ -41,7 +45,7 @@ class ExpressApp {
     Logger.getInstance().info("Config :: Loading...");
 
     this.express = EnvConfig.init(this.express);
-    // this.express = FirebaseConfig.init(this.express);
+    this.express = FirebaseConfig.init(this.express);
   }
 
   /**
@@ -52,6 +56,16 @@ class ExpressApp {
 
     Logger.getInstance().info("Logger :: Mounted");
   }
+
+  /**
+   * Mount Swagger
+   */
+  private mountSwagger(): void {
+    Logger.getInstance().info("Swagger :: Initializing...");
+
+    this.express = SwaggerDocs.init(this.express);
+  }
+
   /**
    * Mounts all the defined middlewares
    */
@@ -100,12 +114,12 @@ class ExpressApp {
    * Starts the express server
    */
   public async _init(): Promise<void> {
-    // Logger.getInstance().info("Database :: Connecting...");
-    // const isConnected = await MongoDB.getInstance().connect();
+    Logger.getInstance().info("Database :: Connecting...");
+    const isConnected = await MongoDB.getInstance().connect();
 
-    // if (!isConnected) {
-    //   process.exit(1);
-    // }
+    if (!isConnected) {
+      process.exit(1);
+    }
 
     Logger.getInstance().info("Server :: Starting...");
 

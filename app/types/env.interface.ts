@@ -20,24 +20,17 @@ export interface IEnvConfig {
 
   SENDGRID_API_KEY: string | undefined;
   SMTP_FROM: string | undefined;
-
-  CLOUDINARY_CLOUD_NAME: string | undefined;
-  CLOUDINARY_API_KEY: string | undefined;
-  CLOUDINARY_API_SECRET: string | undefined;
 }
 
 /**
  * Define FirebaseConfig interface
  */
 export interface IFirebaseConfig {
-  FIREBASE_TYPE: string | undefined;
+  FIREBASE_API_KEY: string | undefined;
+  FIREBASE_AUTH_DOMAIN: string | undefined;
   FIREBASE_PROJECT_ID: string | undefined;
-  FIREBASE_PRIVATE_KEY_ID: string | undefined;
-  FIREBASE_PRIVATE_KEY: string | undefined;
-  FIREBASE_CLIENT_EMAIL: string | undefined;
-  FIREBASE_CLIENT_ID: string | undefined;
-  FIREBASE_AUTH_URI: string | undefined;
-  FIREBASE_TOKEN_URI: string | undefined;
-  FIREBASE_AUTH_PROVIDER_X509_CERT_URL: string | undefined;
-  FIREBASE_CLIENT_X509_CERT_URL: string | undefined;
+  FIREBASE_STORAGE_BUCKET: string | undefined;
+  FIREBASE_MESSAGING_SENDER_ID: string | undefined;
+  FIREBASE_APP_ID: string | undefined;
+  FIREBASE_MEASUREMENT_ID: string | undefined;
 }

@@ -21,12 +21,19 @@ const colors = {
 // Link colors of the log levels.
 winston.addColors(colors);
 
+
 // Define format of the Logger.getInstance()
 let _consoleFormat = winston.format.combine(
-  winston.format.colorize(),
+  winston.format.label({
+    label: "[LOGGER]",
+  }),
+  winston.format.colorize({
+    all: true,
+    colors,
+  }),
   winston.format.timestamp({ format: "YYYY-MM-DD HH:mm:ss:ms" }),
-  winston.format.printf(({ timestamp, level, message }) => {
-    return `[${timestamp}] ${level}: ${message}`;
+  winston.format.printf(({ label, timestamp, level, message }) => {
+    return `${label} [${timestamp}] ${level}: ${message}`;
   })
 );
 

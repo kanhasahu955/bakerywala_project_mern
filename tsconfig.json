@@ -20,6 +20,7 @@
       "@route/*": ["app/routes/*"],
       "@constant/*": ["app/constants/*"],
       "@enum/*":["app/enum/*"],
+      "@type/*":["app/types/*"]
     },
     "outDir": "./dist",
     /* Language and Environment */
