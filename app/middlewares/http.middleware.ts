@@ -8,6 +8,7 @@ import bodyParser from "body-parser";
 import helmet from "helmet";
 import compression from "compression";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import Logger from "@helper/logger";
 
 class Http {
@@ -15,6 +16,8 @@ class Http {
     Logger.getInstance().info("App :: Registering HTTP middleware...");
 
     _express.use(cors());
+
+    _express.use(cookieParser());
 
     _express.use(helmet());
 
