@@ -1,10 +1,11 @@
 import { Router } from "express";
 import { rateLimit } from "express-rate-limit";
-import UserService from "@controller/user.controller";
+import UserController from "@controller/user.controller";
+import UserService from "@services/user.service";
 
 const AuthRouter: Router = Router();
-
-const userSvc = new UserService();
+const userService = new UserService();
+const userController = new UserController(userService);
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -14,5 +15,6 @@ const limiter = rateLimit({
   message: "You can only make 10 requests every 15 minutes",
 });
 
-AuthRouter.route("/me").all(userSvc.createUserExc, limiter);
+AuthRouter.route("/register").all(userController.register, limiter);
+
 export default AuthRouter;

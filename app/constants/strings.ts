@@ -36,7 +36,7 @@ class StringValues {
   public static EMAIL_BODY_REQUIRED: string = "Email body is required";
   public static SENDGRID_API_KEY_NOT_FOUND: string =
     "SendGrid API key not found";
-  public static FIRST_NAME_REQUIRED: string = "First name is required";
+  public static NAME_REQUIRED: string = "name is required";
   public static LAST_NAME_REQUIRED: string = "Last name is required";
   public static FULL_NAME_REQUIRED: string = "Full name is required";
   public static OTP_REQUIRED: string = "OTP is required";

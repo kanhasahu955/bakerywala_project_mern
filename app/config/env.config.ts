@@ -12,7 +12,7 @@ class EnvConfig {
       SERVER_MAINTENANCE: process.env["SERVER_MAINTENANCE"] === "true",
 
       MONGO_URI:
-        process.env.NODE_ENV === "dev"
+        process.env.NODE_ENV === "development"
           ? process.env["LOCAL_DATABASE_URL"]
           : process.env["PROD_DATABASE_URL"],
       DB_NAME: process.env["DB_NAME"],
