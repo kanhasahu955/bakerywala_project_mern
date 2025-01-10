@@ -6,7 +6,7 @@
     "dev": "bun --hot index.ts",
     "start": "bun dist/index.js",
     "clean": "rimraf -rf dist",
-    "build": "echo \"✅ Building project...\" && bun run clean && tsc"
+    "build": "echo \"✅ Building project...\" && tsc"
   },
   "keywords": [],
   "author": "",
