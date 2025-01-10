@@ -11,10 +11,10 @@ class EnvConfig {
       NODE_ENV: process.env.NODE_ENV,
       SERVER_MAINTENANCE: process.env["SERVER_MAINTENANCE"] === "true",
 
-      MONGO_URI:
-        process.env.NODE_ENV === "development"
-          ? process.env["LOCAL_DATABASE_URL"]
-          : process.env["PROD_DATABASE_URL"],
+      MONGO_URI:process.env["PROD_DATABASE_URL"],
+        // process.env.NODE_ENV === "development"
+        //   ? process.env["LOCAL_DATABASE_URL"]
+        //   : process.env["PROD_DATABASE_URL"],
       DB_NAME: process.env["DB_NAME"],
 
       API_PREFIX: process.env["API_PREFIX"] || "api/v1",
