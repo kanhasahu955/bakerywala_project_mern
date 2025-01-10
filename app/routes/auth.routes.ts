@@ -16,5 +16,6 @@ const limiter = rateLimit({
 });
 
 AuthRouter.route("/register").all(userController.register, limiter);
+AuthRouter.route("/login").all(userController.login, limiter);
 
 export default AuthRouter;

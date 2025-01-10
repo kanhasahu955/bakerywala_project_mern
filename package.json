@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/bun": "^1.1.16",
     "@types/compression": "^1.7.5",
     "@types/cors": "^2.8.17",
@@ -27,7 +28,10 @@
   },
   "dependencies": {
     "@prisma/client": "^6.2.1",
+    "@types/bcryptjs": "^2.4.6",
     "@types/cookie-parser": "^1.4.8",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "compression": "^1.7.5",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",

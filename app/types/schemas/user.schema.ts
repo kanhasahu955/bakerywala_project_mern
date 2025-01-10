@@ -2,12 +2,9 @@ export interface IUser {
   role: string;
   email: string;
   name: string;
-  bio?: string;
-  avatar?: string;
-  password?: string;
+  bio: string;
+  avatar: string;
+  password: string;
 }
 
-enum RoleType {
-  USER = "USER",
-  ADMIN = "ADMIN",
-}
+export type ILogin = Pick<IUser, "email" | "password">;
