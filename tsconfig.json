@@ -41,7 +41,7 @@
     // "rootDir": "./src",
     "baseUrl": ".",
 
-    "types": ["bun-types"],
+    // "types": ["bun-types"],
     "paths": {
       "@services/*": ["app/services/*"],
       "@utils/*": ["app/utils/*"],
