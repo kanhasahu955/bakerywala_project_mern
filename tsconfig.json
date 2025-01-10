@@ -1,7 +1,13 @@
 {
   "compilerOptions": {
     /* Visit https://aka.ms/tsconfig to read more about this file */
+    "lib": ["ESNext"],
+    "moduleDetection": "force",
+    "jsx": "react-jsx",
+    "allowJs": true,
 
+    // Bundler mode
+    "moduleResolution": "Node",
     /* Projects */
     // "incremental": true,                              /* Save .tsbuildinfo files to allow for incremental compilation of projects. */
     // "composite": true,                                /* Enable constraints that allow a TypeScript project to be used with project references. */
@@ -24,7 +30,7 @@
     },
     "outDir": "./dist",
     /* Language and Environment */
-    "target": "es2016" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+    "target": "ESNext" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
     // "lib": [],                                        /* Specify a set of bundled library declaration files that describe the target runtime environment. */
     // "jsx": "preserve",                                /* Specify what JSX code is generated. */
     // "experimentalDecorators": true,                   /* Enable experimental support for legacy experimental decorators. */
@@ -119,6 +125,10 @@
 
     /* Completeness */
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
-  }
+    "skipLibCheck": true ,/* Skip type checking all .d.ts files. */
+    "sourceMap": true,
+    "types": ["bun-types"]
+  },
+  "include": ["./app/**/*"],
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }

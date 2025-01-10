@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "bun --hot index.ts"
+    "dev": "bun --hot index.ts",
+    "start": "bun dist/index.js",
+    "clean": "rimraf -rf dist",
+    "build": "echo \"✅ Building project...\" && bun run clean && tsc"
   },
   "keywords": [],
   "author": "",
