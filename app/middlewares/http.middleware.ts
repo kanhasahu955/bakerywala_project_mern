@@ -2,18 +2,20 @@
  * Enable basic express apis middleware
  */
 
-import { json, urlencoded } from "express";
+import express, { json, urlencoded } from "express";
 import type { Application } from "express";
 import bodyParser from "body-parser";
 import helmet from "helmet";
 import compression from "compression";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import path from "path";
 import Logger from "@helper/logger";
 
 class Http {
   public static mount(_express: Application): Application {
     Logger.getInstance().info("App :: Registering HTTP middleware...");
+    __dirname = path.resolve();
 
     _express.use(cors());
 
@@ -32,6 +34,13 @@ class Http {
     _express.use(bodyParser.urlencoded({ extended: true, limit: "100mb" }));
 
     _express.set("trust proxy", true);
+
+    if (process.env.NODE_ENV === "production") {
+      _express.use(express.static(path.join(__dirname, "client", "dist")));
+      _express.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
+      });
+    }
 
     return _express;
   }
