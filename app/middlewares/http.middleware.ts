@@ -35,7 +35,8 @@ class Http {
 
     _express.set("trust proxy", true);
 
-    if (process.env.NODE_ENV === "production") {
+
+    if (process.env.NODE_ENV !== "development") {
       _express.use(express.static(path.join(__dirname, "client", "dist")));
       _express.get("*", (_:Request, res:Response):any => {
         res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
