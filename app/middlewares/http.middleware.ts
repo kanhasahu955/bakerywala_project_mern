@@ -3,7 +3,7 @@
  */
 
 import express, { json, urlencoded } from "express";
-import type { Application } from "express";
+import type { Application,Request,Response } from "express";
 import bodyParser from "body-parser";
 import helmet from "helmet";
 import compression from "compression";
@@ -37,7 +37,7 @@ class Http {
 
     if (process.env.NODE_ENV === "production") {
       _express.use(express.static(path.join(__dirname, "client", "dist")));
-      _express.get("*", (req, res) => {
+      _express.get("*", (_:Request, res:Response):any => {
         res.sendFile(path.resolve(__dirname, "client", "dist", "index.html"));
       });
     }
