@@ -1,8 +1,9 @@
 import AppSidebar from "@/components/custom/AppSidebar";
-import Footer from "@/layout/footer";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { FC, ReactElement, ReactNode } from "react";
 import { Outlet } from "react-router-dom";
+import Footer from "@/layout/footer";
+import Topbar from "@/layout/topbar";
 
 interface Props {
   children?: ReactElement | ReactNode;
@@ -11,7 +12,7 @@ interface Props {
 const Layout: FC<Props> = (): ReactElement => {
   return (
     <SidebarProvider>
-      {/* <Topbar/> */}
+      <Topbar />
       <AppSidebar />
       <main>
         <Outlet />
